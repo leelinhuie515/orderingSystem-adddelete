@@ -19,6 +19,16 @@ class _coffeePageState extends State<coffeePage> {
     // Provider.of<CoffeeShop>(context, listen: false).addItemToCart(coffee);
     Provider.of<CartModel>(context, listen: false).addToCart(Cart(
         name: coffee.name, price: coffee.price, imagepath: coffee.imagepath));
+    //notifies user item has been Added
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(
+            coffee.name+'\n'+'Item Added',
+            textAlign: TextAlign.center,
+          ),
+        )
+    );
   }
 
   @override

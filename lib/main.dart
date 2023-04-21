@@ -5,9 +5,14 @@ import 'package:orderingsystem/pages/home_page.dart';
 import 'package:provider/provider.dart';
 import '../model/cart_model.dart';
 import 'model/bread_shop.dart';
+import 'firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+
+Future <void> main()async {
   Provider.debugCheckInvalidValueType = null;
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 

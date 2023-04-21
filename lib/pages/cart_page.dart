@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:orderingsystem/components/coffee_tile.dart';
 import 'package:orderingsystem/model/cart_model.dart';
-import 'package:orderingsystem/model/coffee.dart';
-import 'package:orderingsystem/model/coffee_shop.dart';
 import 'package:provider/provider.dart';
 import '../components/cart_tile.dart';
 import '../model/cart.dart';
@@ -20,7 +17,17 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   void removeFromCart(Cart cart) {
     Provider.of<CartModel>(context, listen: false).removeItemFromCart(cart);
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(
+            cart.name+'\n'+'Item Removed',
+            textAlign: TextAlign.center,
+          ),
+        )
+    );
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +81,7 @@ class _CartPageState extends State<CartPage> {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
-                    color: Colors.blueGrey,
+                    color: Colors.black54,
                   ),
                   padding: const EdgeInsets.all(24),
                   child: Row(
@@ -85,7 +92,7 @@ class _CartPageState extends State<CartPage> {
                         children: [
                           Text(
                             'Total Price',
-                            style: TextStyle(color: Colors.blueGrey[200]),
+                            style: TextStyle(color: Colors.white),
                           ),
 
                           const SizedBox(height: 8),
@@ -94,7 +101,7 @@ class _CartPageState extends State<CartPage> {
                                 Provider.of<CartModel>(context, listen: false)
                                     .calculateTotal()
                                     .toStringAsFixed(2),
-                            style: TextStyle(color: Colors.blueGrey[200]),
+                            style: TextStyle(color: Colors.white),
                           )
                           // total price
                         ],

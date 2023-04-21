@@ -3,7 +3,6 @@ import 'package:orderingsystem/components/tea_tile.dart';
 import 'package:orderingsystem/model/cart.dart';
 import 'package:orderingsystem/model/tea_shop.dart';
 import 'package:provider/provider.dart';
-
 import '../model/cart_model.dart';
 import '../model/tea.dart';
 
@@ -19,6 +18,16 @@ class _teaPageState extends State<teaPage> {
   void addToCart(Tea tea) {
     Provider.of<CartModel>(context, listen: false).addToCart(Cart(
         name: tea.name, price: tea.price, imagepath: tea.imagepath));
+    //notifies user item has been Added
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(
+            tea.name+'\n'+'Item Added',
+            textAlign: TextAlign.center,
+          ),
+        )
+    );
   }
 
   @override

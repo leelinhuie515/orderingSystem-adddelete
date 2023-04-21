@@ -1,30 +1,26 @@
 import 'package:flutter/material.dart';
 
-class MyButton extends StatelessWidget {
-  final Function()? onTap;
+//Refactor the Padding widget into a new widget named RoundedButton, making sure, the color, onPressed and text values are mutable
+class RoundedButton extends StatelessWidget {
+  final Color color;
+  final void Function() onPressed;
+  final String label;
 
-  const MyButton({super.key, required this.onTap});
+  RoundedButton({required this.color, required this.onPressed, required this.label});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.all(25),
-        margin: const EdgeInsets.symmetric(horizontal: 25),
-        decoration: BoxDecoration(
-          color: Colors.black,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: const Center(
-          child: Text(
-            "Sign In",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-            ),
-          ),
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 16.0),
+      child: Material(
+        elevation: 5.0,
+        color: color,
+        borderRadius: BorderRadius.circular(30.0),
+        child: MaterialButton(
+          onPressed: onPressed,
+          minWidth: 200.0,
+          height: 42.0,
+          child: Text(label),
         ),
       ),
     );

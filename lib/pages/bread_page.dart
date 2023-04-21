@@ -19,6 +19,15 @@ class _breadPageState extends State<breadPage> {
     // Provider.of<BreadShop>(context, listen: false).addItemToCart(bread);
     Provider.of<CartModel>(context, listen: false).addToCart(Cart(
         name: bread.name, price: bread.price, imagepath: bread.imagepath));
+    //notifies user item has been Added
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(title: Text(
+        bread.name+'\n'+'Item Added',
+        textAlign: TextAlign.center,
+        ),
+        ),
+    );
   }
 
   @override

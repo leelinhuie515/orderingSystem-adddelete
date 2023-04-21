@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:orderingsystem/model/bread.dart';
-import 'package:orderingsystem/model/bread_shop.dart';
-import 'package:orderingsystem/model/cart.dart';
 import 'package:orderingsystem/model/cart_model.dart';
 
 CartModel cartmodel = CartModel();
